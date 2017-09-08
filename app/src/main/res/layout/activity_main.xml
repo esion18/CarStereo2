@@ -85,7 +85,7 @@
 
                 <ImageView
                     android:id="@+id/Radio_display"
-                    android:layout_width="331dp"
+                    android:layout_width="538dp"
                     android:layout_height="150dp"
                     android:layout_weight="0.48"
                     app:srcCompat="@mipmap/radio_dislpay" />
@@ -96,7 +96,7 @@
                     android:layout_weight="0.25" />
 
                 <LinearLayout
-                    android:layout_width="336dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
@@ -145,15 +145,160 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.00"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+
+                <TextView
+                    android:id="@+id/Tuner_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tuner"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp"
+                    android:translationX="100dp" />
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:background="#486087" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ff0000"
+            android:background="#18386d"
             android:orientation="horizontal"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="309dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <Space
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.06" />
+
+                    <TextView
+                        android:id="@+id/Volume_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_weight="0.06"
+                        android:text="Volume:"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:translationX="15dp"
+                        android:translationY="15dp" />
+
+                    <SeekBar
+                        android:id="@+id/seekBar2"
+                        android:layout_width="248dp"
+                        android:layout_height="50dp"
+                        android:background="#486087" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.74" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="956dp"
+                        android:layout_height="167dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="618dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:translationX="200dp">
+
+                            <Button
+                                android:id="@+id/Stop"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Stop" />
+
+                            <Button
+                                android:id="@+id/Pause"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="I I" />
+
+                            <Button
+                                android:id="@+id/Eject"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Eject" />
+
+                            <Button
+                                android:id="@+id/Forward_track"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Skip" />
+
+                            <Button
+                                android:id="@+id/Repeat_track"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Repeat" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp" />
+
+                        <LinearLayout
+                            android:layout_width="1047dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:scaleX="5"
+                            android:scaleY="5"
+                            android:weightSum="1">
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="73dp"
+                                android:scaleX="2"
+                                app:srcCompat="@mipmap/disk_tray" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
