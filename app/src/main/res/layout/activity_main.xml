@@ -204,6 +204,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="OnPreset1Click"
                         android:text="1" />
 
                     <Button
@@ -211,6 +212,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="OnPreset2Click"
                         android:text="2" />
 
                     <Button
@@ -218,6 +220,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="OnPreset3Click"
                         android:text="3" />
 
                     <Button
@@ -225,6 +228,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="OnPreset4Click"
                         android:text="4" />
 
                     <Button
@@ -232,6 +236,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="OnPreset5Click"
                         android:text="5" />
 
                     <Button
@@ -239,6 +244,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="OnPreset6Click"
                         android:text="6" />
                 </LinearLayout>
 

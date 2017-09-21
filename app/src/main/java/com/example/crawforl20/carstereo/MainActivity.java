@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private double currentFMStation;
     private Button seek_down;
     private Button seek_up;
+    private int[] AM_presets;
+    private double[] PM_presets;
 
 
     @Override
@@ -57,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
         Current_Station = (TextView)findViewById(R.id.Current_Station);
         seek_down = (Button)findViewById(R.id.seek_down);
         seek_up = (Button)findViewById(R.id.seek_up);
+
+        AM_presets = new int[] {550,600,650,700,750,800};
+        PM_presets = new double[] {90.9,92.9, 94.9, 96.9, 98.9, 100.9};
         /*seekBar = (SeekBar)findViewById(R.id.seekBar);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -207,7 +212,66 @@ public class MainActivity extends AppCompatActivity {
             message = String.format("%.1f",currentFMStation);
             Current_Station.setText(""+message +" MHz");
         }
-
+    }
+    public void OnPreset1Click(View v){
+        if(radiostatus == 0){
+            currentAMStation = AM_presets[0];
+            Current_Station.setText(""+AM_presets[0] +" kHz");
+        }
+        else{
+            currentFMStation = PM_presets[0];
+            Current_Station.setText(""+PM_presets[0] +" MHz");
+        }
+    }
+    public void OnPreset2Click(View v){
+        if(radiostatus == 0){
+            currentAMStation = AM_presets[1];
+            Current_Station.setText(""+AM_presets[1] +" kHz");
+        }
+        else{
+            currentFMStation = PM_presets[1];
+            Current_Station.setText(""+PM_presets[1] +" MHz");
+        }
+    }
+    public void OnPreset3Click(View v){
+        if(radiostatus == 0){
+            currentAMStation = AM_presets[2];
+            Current_Station.setText(""+AM_presets[2] +" kHz");
+        }
+        else{
+            currentFMStation = PM_presets[2];
+            Current_Station.setText(""+PM_presets[2] +" MHz");
+        }
+    }
+    public void OnPreset4Click(View v){
+        if(radiostatus == 0){
+            currentAMStation = AM_presets[3];
+            Current_Station.setText(""+AM_presets[3] +" kHz");
+        }
+        else{
+            currentFMStation = PM_presets[3];
+            Current_Station.setText(""+PM_presets[3] +" MHz");
+        }
+    }
+    public void OnPreset5Click(View v){
+        if(radiostatus == 0){
+            currentAMStation = AM_presets[4];
+            Current_Station.setText(""+AM_presets[4] +" kHz");
+        }
+        else{
+            currentFMStation = PM_presets[4];
+            Current_Station.setText(""+PM_presets[4] +" MHz");
+        }
+    }
+    public void OnPreset6Click(View v){
+        if(radiostatus == 0){
+            currentAMStation = AM_presets[5];
+            Current_Station.setText(""+AM_presets[5] +" kHz");
+        }
+        else{
+            currentFMStation = PM_presets[5];
+            Current_Station.setText(""+PM_presets[5] +" MHz");
+        }
     }
 
 
