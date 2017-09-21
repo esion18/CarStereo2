@@ -14,7 +14,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 
-public class MainActivity extends AppCompatActivity implements seek{
+public class MainActivity extends AppCompatActivity {
     private Button PowerButton;
     private TextView Tuner_Txt;
     private TextView Current_Station;
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements seek{
     private SeekBar seekbar;
     private int seekBarStatus;
     private int radiostatus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements seek{
         seekbar = (SeekBar)findViewById(R.id.seekBar);
         radiostatus = 0;
 
-        seekbar.setOnSeekBarChangeListener(this); {
+    /*    seekbar.setOnSeekBarChangeListener(this) {
             public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser) {
                 if(radiostatus ==0){
                     seekbar.setProgress(0);
@@ -84,39 +85,40 @@ public class MainActivity extends AppCompatActivity implements seek{
             public void onStopTrackingTouch(SeekBar seekbar) {
 
             }
-        });
-
+        }
+*/
     }
 
 
     public void PowerOn(View v) {
         if(tog==true)
         {
-
-            preset1.setBackgroundColor(Color.GRAY);
-            preset2.setBackgroundColor(Color.GRAY);
-            preset3.setBackgroundColor(Color.GRAY);
-            preset4.setBackgroundColor(Color.GRAY);
-            preset5.setBackgroundColor(Color.GRAY);
-            preset6.setBackgroundColor(Color.GRAY);
-            Tuner_Txt.setBackgroundColor(Color.GRAY);
-            am.setBackgroundColor(Color.GRAY);
-            fm.setBackgroundColor(Color.GRAY);
-            Radio_Display.setBackgroundColor(Color.GRAY);
+            //on
+            preset1.setBackgroundColor(Color.rgb(0,171,255));
+            preset2.setBackgroundColor(Color.rgb(0,171,255));
+            preset3.setBackgroundColor(Color.rgb(0,171,255));
+            preset4.setBackgroundColor(Color.rgb(0,171,255));
+            preset5.setBackgroundColor(Color.rgb(0,171,255));
+            preset6.setBackgroundColor(Color.rgb(0,171,255));
+            Tuner_Txt.setBackgroundColor(Color.rgb(0,171,255));
+            am.setBackgroundColor(Color.rgb(0,171,255));
+            fm.setBackgroundColor(Color.rgb(0,171,255));
+            Radio_Display.setBackgroundColor(Color.rgb(0,171,255));
             tog = false;
 
         }
         else {
-            preset1.setBackgroundColor(Color.RED);
-            preset2.setBackgroundColor(Color.RED);
-            preset3.setBackgroundColor(Color.RED);
-            preset4.setBackgroundColor(Color.RED);
-            preset5.setBackgroundColor(Color.RED);
-            preset6.setBackgroundColor(Color.RED);
-            Tuner_Txt.setBackgroundColor(Color.RED);
-            am.setBackgroundColor(Color.RED);
-            fm.setBackgroundColor(Color.RED);
-            Radio_Display.setBackgroundColor(Color.RED);
+            //off
+            preset1.setBackgroundColor(Color.argb(100,26,10,255));
+            preset2.setBackgroundColor(Color.argb(100,26,10,255));
+            preset3.setBackgroundColor(Color.argb(100,26,10,255));
+            preset4.setBackgroundColor(Color.argb(100,26,10,255));
+            preset5.setBackgroundColor(Color.argb(100,26,10,255));
+            preset6.setBackgroundColor(Color.argb(100,26,10,255));
+            Tuner_Txt.setBackgroundColor(Color.argb(100,26,10,255));
+            am.setBackgroundColor(Color.argb(100,26,10,255));
+            fm.setBackgroundColor(Color.argb(100,26,10,255));
+            Radio_Display.setBackgroundColor(Color.argb(100,26,10,255));
             tog = true;
         }
     }
