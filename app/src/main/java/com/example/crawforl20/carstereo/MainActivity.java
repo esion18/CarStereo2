@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.view.View.OnTouchListener;
+
 
 import org.w3c.dom.Text;
 
@@ -26,12 +28,16 @@ public class MainActivity extends AppCompatActivity {
     private Button preset6;
     private Button am;
     private Button fm;
-    private ImageView Radio_Display;
     private boolean tog;
     private TextView amfm_indicator;
-    private SeekBar seekbar;
-    private int seekBarStatus;
+//    private SeekBar seekBar;
+
     private int radiostatus;
+    private int currentAMStation;
+    private double currentFMStation;
+    private Button seek_down;
+    private Button seek_up;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,46 +53,57 @@ public class MainActivity extends AppCompatActivity {
         preset6 = (Button)findViewById(R.id.Preset_6);
         am = (Button)findViewById(R.id.AM);
         fm = (Button)findViewById(R.id.FM);
-        Radio_Display = (ImageView)findViewById(R.id.Radio_display);
-        tog = true;
         amfm_indicator = (TextView)findViewById(R.id.amfm_indicator);
         Current_Station = (TextView)findViewById(R.id.Current_Station);
-        seekbar = (SeekBar)findViewById(R.id.seekBar);
-        radiostatus = 0;
+        seek_down = (Button)findViewById(R.id.seek_down);
+        seek_up = (Button)findViewById(R.id.seek_up);
+        /*seekBar = (SeekBar)findViewById(R.id.seekBar);
 
-    /*    seekbar.setOnSeekBarChangeListener(this) {
-            public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser) {
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            private int seekBarStatus;
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                seekBarStatus = i;
                 if(radiostatus ==0){
-                    seekbar.setProgress(0);
-                    seekbar.incrementProgressBy(10);
 
-                    seekbar.setMax(1170);
-                    progress = progress / 10;
-                    progress = progress * 10;
-                    Current_Station.setText(String.valueOf(progress+530));
-                }
-                else if(radiostatus ==1){
-                    double p = progress;
-                    seekbar.setProgress(0);
-                    seekbar.incrementProgressBy(10);
+                    seekBarStatus += 530;
 
-                    seekbar.setMax(99);
-                    p = progress / .2;
-                    p = progress * .2;
-                    Current_Station.setText(String.valueOf((double)progress+88.1));
+                    Current_Station.setText(""+seekBarStatus +" kHz");
                 }
+                else{
+                    Current_Station.setText(""+seekBarStatus);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
 
-            public void onStartTrackingTouch(SeekBar seekbar) {
-
-            }
-
-            public void onStopTrackingTouch(SeekBar seekbar) {
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         }
-*/
+        );*/
+        radiostatus = 0;
+        currentAMStation = 530;
+        currentFMStation = 88.1;
+        preset1.setBackgroundColor(Color.argb(100,26,10,255));
+        preset2.setBackgroundColor(Color.argb(100,26,10,255));
+        preset3.setBackgroundColor(Color.argb(100,26,10,255));
+        preset4.setBackgroundColor(Color.argb(100,26,10,255));
+        preset5.setBackgroundColor(Color.argb(100,26,10,255));
+        preset6.setBackgroundColor(Color.argb(100,26,10,255));
+        Current_Station.setBackgroundColor(Color.argb(100,26,10,255));
+        Current_Station.setText("");
+        amfm_indicator.setText("");
+        am.setBackgroundColor(Color.argb(100,26,10,255));
+        fm.setBackgroundColor(Color.argb(100,26,10,255));
+        tog = true;
+        seek_down.setBackgroundColor(Color.argb(100,26,10,255));
+        seek_up.setBackgroundColor(Color.argb(100,26,10,255));
+
     }
 
 
@@ -100,12 +117,16 @@ public class MainActivity extends AppCompatActivity {
             preset4.setBackgroundColor(Color.rgb(0,171,255));
             preset5.setBackgroundColor(Color.rgb(0,171,255));
             preset6.setBackgroundColor(Color.rgb(0,171,255));
-            Tuner_Txt.setBackgroundColor(Color.rgb(0,171,255));
+
             am.setBackgroundColor(Color.rgb(0,171,255));
             fm.setBackgroundColor(Color.rgb(0,171,255));
-            Radio_Display.setBackgroundColor(Color.rgb(0,171,255));
             tog = false;
-
+            Current_Station.setBackgroundColor(Color.rgb(0,171,255));
+            Current_Station.setText(""+currentAMStation + " kHz");
+            seek_down.setBackgroundColor(Color.rgb(0,171,255));
+            seek_up.setBackgroundColor(Color.rgb(0,171,255));
+            amfm_indicator.setText("AM");
+            radiostatus = 0;
         }
         else {
             //off
@@ -115,24 +136,79 @@ public class MainActivity extends AppCompatActivity {
             preset4.setBackgroundColor(Color.argb(100,26,10,255));
             preset5.setBackgroundColor(Color.argb(100,26,10,255));
             preset6.setBackgroundColor(Color.argb(100,26,10,255));
-            Tuner_Txt.setBackgroundColor(Color.argb(100,26,10,255));
+            Current_Station.setBackgroundColor(Color.argb(100,26,10,255));
+            Current_Station.setText("");
+
             am.setBackgroundColor(Color.argb(100,26,10,255));
             fm.setBackgroundColor(Color.argb(100,26,10,255));
-            Radio_Display.setBackgroundColor(Color.argb(100,26,10,255));
             tog = true;
+            seek_down.setBackgroundColor(Color.argb(100,26,10,255));
+            seek_up.setBackgroundColor(Color.argb(100,26,10,255));
+            amfm_indicator.setText("");
         }
     }
     public void onAMClick(View v){
         amfm_indicator.setText("AM");
         radiostatus = 0;
+
+        Current_Station.setText(""+currentAMStation +" kHz");
     }
 
     public void onFMClick(View v){
         amfm_indicator.setText("FM");
         radiostatus = 1;
+        String message = "";
+        message = String.format("%.1f",currentFMStation);
+        Current_Station.setText(""+message +" MHz");
     }
+    public void OnSeekDownClick(View v){
+        String message = "";
+        if(radiostatus == 0){
+            if(currentAMStation <=530){
+                currentAMStation = 1700;
+                Current_Station.setText(""+currentAMStation +" kHz");
+                return;
+            }
+            currentAMStation -= 10;
+            Current_Station.setText(""+currentAMStation +" kHz");
+        }
+        else{
+            if(currentFMStation <=88.1){
+                currentFMStation = 107.9;
+                Current_Station.setText(""+currentFMStation +" MHz");
+                return;
+            }
+            currentFMStation -= 0.2;
+            message = String.format("%.1f",currentFMStation);
+            Current_Station.setText(""+message +" MHz");
+        }
 
 
+    }
+    public void OnSeekUpClick(View v){
+        String message = "";
+        if(radiostatus == 0){
+            if(currentAMStation >=1700){
+                currentAMStation = 530;
+                Current_Station.setText(""+currentAMStation +" kHz");
+                return;
+            }
+            currentAMStation += 10;
+            Current_Station.setText(""+currentAMStation +" kHz");
+        }
+        else{
+            if(currentFMStation >=107.9){
+                currentFMStation = 88.1;
+                message = ""+currentFMStation;
+                Current_Station.setText(""+currentFMStation +" MHz");
+                return;
+            }
+            currentFMStation += 0.2;
+            message = String.format("%.1f",currentFMStation);
+            Current_Station.setText(""+message +" MHz");
+        }
+
+    }
 
 
 }
